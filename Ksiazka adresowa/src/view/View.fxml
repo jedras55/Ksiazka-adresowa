@@ -6,8 +6,7 @@
 <?import java.lang.*?>
 <?import javafx.scene.layout.*?>
 
-
-<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="1032.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="1032.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="logic.Ksiazka">
    <children>
       <MenuBar>
         <menus>
@@ -89,14 +88,14 @@
                         <Font size="15.0" />
                      </font>
                   </Label>
-                  <TextField GridPane.columnIndex="1" />
-                  <TextField GridPane.columnIndex="1" GridPane.rowIndex="1" />
-                  <TextField GridPane.columnIndex="1" GridPane.rowIndex="2" />
-                  <TextField GridPane.columnIndex="1" GridPane.rowIndex="3" />
-                  <TextField GridPane.columnIndex="3" />
-                  <TextField GridPane.columnIndex="3" GridPane.rowIndex="1" />
-                  <TextField GridPane.columnIndex="3" GridPane.rowIndex="2" />
-                  <TextField GridPane.columnIndex="3" GridPane.rowIndex="3" />
+                  <TextField fx:id="textFieldImie" GridPane.columnIndex="1" />
+                  <TextField fx:id="textFieldNazwisko" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                  <TextField fx:id="textFieldNumerTelefonu" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                  <TextField fx:id="textFieldEmail" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                  <TextField fx:id="textFieldMiasto" GridPane.columnIndex="3" />
+                  <TextField fx:id="textFieldUlica" GridPane.columnIndex="3" GridPane.rowIndex="1" />
+                  <TextField fx:id="textFieldNumerDomu" GridPane.columnIndex="3" GridPane.rowIndex="2" />
+                  <TextField fx:id="textFieldKodPocztowy" GridPane.columnIndex="3" GridPane.rowIndex="3" />
                </children>
             </GridPane>
          </children>
