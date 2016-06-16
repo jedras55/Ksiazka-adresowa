@@ -23,7 +23,7 @@
          <children>
             <VBox prefHeight="375.0" prefWidth="297.0">
                <children>
-                  <ListView prefHeight="302.0" prefWidth="280.0" VBox.vgrow="ALWAYS" />
+                  <ListView fx:id="listViewKontakty" prefHeight="302.0" prefWidth="280.0" VBox.vgrow="ALWAYS" />
                   <AnchorPane prefHeight="73.0" prefWidth="231.0" style="-fx-background-color: #E3E3E3;">
                      <children>
                         <Button layoutX="32.0" layoutY="24.0" mnemonicParsing="false" prefWidth="67.0" text="Nowy" AnchorPane.leftAnchor="32.0" />

@@ -1,9 +1,13 @@
 package logic;
 
 import javafx.fxml.FXML;
+import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
 
 public class Ksiazka {
+
+	@FXML
+	private ListView<?> listViewKontakty;
 
     @FXML
     private TextField textFieldMiasto;
