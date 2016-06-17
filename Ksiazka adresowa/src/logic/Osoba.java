@@ -71,4 +71,7 @@ public class Osoba {
 	public String toString(){
 		return imie + " " + nazwisko;
 	}
+	public String toStringPlik(){
+		return imie + " ;" + nazwisko + " ;" + numerTelefonu + " ;" + email + " ;"+ miasto + " ;" + ulica + " ;" + numerDomu + " ;" + kodPocztowy;
+	}
 }

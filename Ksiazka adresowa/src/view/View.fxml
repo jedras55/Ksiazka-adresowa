@@ -15,7 +15,6 @@
               <MenuItem mnemonicParsing="false" onAction="#Importuj" text="Importuj książkę z pliku..." />
                   <MenuItem mnemonicParsing="false" onAction="#Eksportuj" text="Eksportuj książkę do pliku..." />
                   <MenuItem mnemonicParsing="false" onAction="#Zamknij" text="Zamknij" />
-                  <MenuItem mnemonicParsing="false" onAction="#dodajTestoweWartosci" text="Dodaj testowe wartości" />
             </items>
           </Menu>
         </menus>
