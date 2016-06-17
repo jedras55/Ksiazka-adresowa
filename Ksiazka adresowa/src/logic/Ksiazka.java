@@ -198,6 +198,8 @@ public class Ksiazka {
     	wybrana.setUlica(textFieldUlica.getText());
     	wybrana.setNumerDomu(textFieldNumerDomu.getText());
     	wybrana.setKodPocztowy(textFieldKodPocztowy.getText());
+    	osoby.set(osoby.indexOf(wybrana), wybrana);
+    	listViewKontakty.setItems(osoby);
     	wyjdzZTrybuEdycji();
     }
 
