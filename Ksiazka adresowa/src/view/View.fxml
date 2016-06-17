@@ -15,6 +15,7 @@
               <MenuItem mnemonicParsing="false" text="Importuj książkę z pliku..." />
                   <MenuItem mnemonicParsing="false" text="Eksportuj książkę do pliku..." />
                   <MenuItem mnemonicParsing="false" text="Zamknij" />
+                  <MenuItem mnemonicParsing="false" onAction="#dodajTestoweWartosci" text="Dodaj testowe wartości" />
             </items>
           </Menu>
         </menus>
@@ -26,9 +27,13 @@
                   <ListView fx:id="listViewKontakty" onMouseClicked="#wybierzOsobe" prefHeight="302.0" prefWidth="280.0" VBox.vgrow="ALWAYS" />
                   <AnchorPane prefHeight="73.0" prefWidth="231.0" style="-fx-background-color: #E3E3E3;">
                      <children>
-                        <Button layoutX="32.0" layoutY="24.0" mnemonicParsing="false" onAction="#testy" prefWidth="67.0" text="Nowy" AnchorPane.leftAnchor="32.0" />
-                        <Button layoutX="115.0" layoutY="24.0" mnemonicParsing="false" prefWidth="67.0" text="Edytuj" />
-                        <Button layoutX="219.0" layoutY="24.0" mnemonicParsing="false" prefWidth="67.0" text="Usuń" AnchorPane.rightAnchor="32.0" />
+                        <Button fx:id="buttonNowy" layoutX="32.0" layoutY="24.0" mnemonicParsing="false" onAction="#Nowy" prefWidth="67.0" text="Nowy" AnchorPane.leftAnchor="32.0" />
+                        <Button fx:id="buttonEdytuj" layoutX="115.0" layoutY="24.0" mnemonicParsing="false" onAction="#Edytuj" prefWidth="67.0" text="Edytuj" />
+                        <Button fx:id="buttonUsun" layoutX="219.0" layoutY="24.0" mnemonicParsing="false" onAction="#Usun" prefWidth="67.0" text="Usuń" AnchorPane.rightAnchor="32.0" />
+                        <Button fx:id="buttonAktualizuj" layoutX="51.0" layoutY="24.0" mnemonicParsing="false" onAction="#Aktualizuj" prefHeight="25.0" prefWidth="97.0" text="Aktualizuj" visible="false" />
+                        <Button fx:id="buttonAnuluj" layoutX="159.0" layoutY="24.0" mnemonicParsing="false" onAction="#Anuluj" prefHeight="25.0" prefWidth="97.0" text="Anuluj" visible="false" />
+                        <Button fx:id="buttonDodajAnuluj" layoutX="159.0" layoutY="24.0" mnemonicParsing="false" onAction="#DodajAnuluj" prefWidth="67.0" text="Anuluj" visible="false" />
+                        <Button fx:id="buttonDodaj" layoutX="77.0" layoutY="24.0" mnemonicParsing="false" onAction="#Dodaj" prefWidth="67.0" text="Dodaj" visible="false" />
                      </children>
                   </AnchorPane>
                </children>
