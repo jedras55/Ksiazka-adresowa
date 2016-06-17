@@ -2,6 +2,7 @@ package logic;
 
 import java.util.Observable;
 
+import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -38,11 +39,24 @@ public class Ksiazka {
     @FXML
     private TextField textFieldKodPocztowy;
 
+    public void wybierzOsobe(){
+    	Osoba wybrana = listViewKontakty.getSelectionModel().getSelectedItem();
+
+    	textFieldImie.setText(wybrana.getImie());
+    	textFieldNazwisko.setText(wybrana.getNazwisko());
+    	textFieldNumerTelefonu.setText(wybrana.getNumerTelefonu());
+    	textFieldEmail.setText(wybrana.getEmail());
+    	textFieldMiasto.setText(wybrana.getMiasto());
+    	textFieldUlica.setText(wybrana.getUlica());
+    	textFieldNumerDomu.setText(wybrana.getNumerDomu());
+    	textFieldKodPocztowy.setText(wybrana.getKodPocztowy());
+    	zablokujTextFieldy();
+    }
+
     public void testy(){
     	osoby.add(new Osoba("Jedrzej", "Ostrowski", "531363458", "jedrzej.ostrowski@gmail.com", "Milejewo", "Pomorska Wies", "7", "82-316"));
     	osoby.add(new Osoba("Marek", "Nowak", "663490220", "marek.nowak@gmail.com", "Elbl¹g", "Grunwaldzka", "102", "82-300"));
     	listViewKontakty.setItems(osoby);
-    	zablokujTextFieldy();
     }
     public void zablokujTextFieldy(){
     	textFieldImie.setEditable(false);
