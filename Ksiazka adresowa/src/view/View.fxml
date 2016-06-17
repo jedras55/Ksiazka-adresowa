@@ -12,9 +12,9 @@
         <menus>
           <Menu mnemonicParsing="false" text="Plik">
             <items>
-              <MenuItem mnemonicParsing="false" text="Importuj książkę z pliku..." />
-                  <MenuItem mnemonicParsing="false" text="Eksportuj książkę do pliku..." />
-                  <MenuItem mnemonicParsing="false" text="Zamknij" />
+              <MenuItem mnemonicParsing="false" onAction="#Importuj" text="Importuj książkę z pliku..." />
+                  <MenuItem mnemonicParsing="false" onAction="#Eksportuj" text="Eksportuj książkę do pliku..." />
+                  <MenuItem mnemonicParsing="false" onAction="#Zamknij" text="Zamknij" />
                   <MenuItem mnemonicParsing="false" onAction="#dodajTestoweWartosci" text="Dodaj testowe wartości" />
             </items>
           </Menu>

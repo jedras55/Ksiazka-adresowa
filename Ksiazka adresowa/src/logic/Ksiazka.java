@@ -1,11 +1,23 @@
 package logic;
 
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Scanner;
+
+import javafx.application.Platform;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
+import javafx.stage.FileChooser;
+import javafx.stage.Stage;
 
 public class Ksiazka {
 
@@ -62,17 +74,19 @@ public class Ksiazka {
 
     public void wybierzOsobe(){
     	wybrana = listViewKontakty.getSelectionModel().getSelectedItem();
-    	wyjdzZTrybuEdycji();
+    	if(wybrana != null){
+	    	wyjdzZTrybuEdycji();
 
-    	textFieldImie.setText(wybrana.getImie());
-    	textFieldNazwisko.setText(wybrana.getNazwisko());
-    	textFieldNumerTelefonu.setText(wybrana.getNumerTelefonu());
-    	textFieldEmail.setText(wybrana.getEmail());
-    	textFieldMiasto.setText(wybrana.getMiasto());
-    	textFieldUlica.setText(wybrana.getUlica());
-    	textFieldNumerDomu.setText(wybrana.getNumerDomu());
-    	textFieldKodPocztowy.setText(wybrana.getKodPocztowy());
-    	zablokujTextFieldy();
+	    	textFieldImie.setText(wybrana.getImie());
+	    	textFieldNazwisko.setText(wybrana.getNazwisko());
+	    	textFieldNumerTelefonu.setText(wybrana.getNumerTelefonu());
+	    	textFieldEmail.setText(wybrana.getEmail());
+	    	textFieldMiasto.setText(wybrana.getMiasto());
+	    	textFieldUlica.setText(wybrana.getUlica());
+	    	textFieldNumerDomu.setText(wybrana.getNumerDomu());
+	    	textFieldKodPocztowy.setText(wybrana.getKodPocztowy());
+	    	zablokujTextFieldy();
+    	}
     }
 
     public void dodajTestoweWartosci(){
@@ -84,6 +98,54 @@ public class Ksiazka {
     	osoby.add(new Osoba("Robert", "Kubica", "663490220", "marek.nowak@gmail.com", "Elbl¹g", "Grunwaldzka", "102", "82-300"));
 
     	listViewKontakty.setItems(osoby);
+    }
+    public void Importuj() throws FileNotFoundException{
+    	FileChooser fileChooser = new FileChooser();
+        FileChooser.ExtensionFilter extFilter = new FileChooser.ExtensionFilter("Pliki .adr (*.adr)", "*.adr");
+        fileChooser.getExtensionFilters().add(extFilter);
+        File file = fileChooser.showOpenDialog(new Stage());
+        if(file != null){
+        	osoby.clear();
+        	Scanner sc = new Scanner(file);
+        	String plik;
+        	plik = sc.nextLine();
+        	plik = plik.substring(1,plik.length()-1);
+        	String[] ksiazka = plik.split(", ");
+
+        	for(int i=0; i<ksiazka.length; i++){
+        		String[] osoba = ksiazka[i].split(";");
+        		osoby.add(new Osoba(osoba[0],osoba[1],osoba[2],osoba[3],osoba[4],osoba[5],osoba[6],osoba[7]));
+        	}
+        	listViewKontakty.setItems(osoby);
+        	sc.close();
+        }
+    }
+    public void Eksportuj() throws IOException{
+    	FileChooser fileChooser = new FileChooser();
+		FileChooser.ExtensionFilter extFilter = new FileChooser.ExtensionFilter("Pliki .adr (*.adr)", "*.adr");
+        fileChooser.getExtensionFilters().add(extFilter);
+        fileChooser.setTitle("Zapisz plik");
+        File file = fileChooser.showSaveDialog(new Stage());
+        ArrayList<String> osoba = new ArrayList<>();
+        for(int i = 0; i < osoby.size(); i++){
+        	Osoba tmp = osoby.get(i);
+        	String imie = tmp.getImie();
+        	String nazwisko = tmp.getNazwisko();
+        	String numerTelefonu = tmp.getNumerTelefonu();
+        	String email = tmp.getEmail();
+        	String miasto = tmp.getMiasto();
+        	String ulica = tmp.getUlica();
+        	String numerDomu = tmp.getNumerDomu();
+        	String kodPocztowy = tmp.getKodPocztowy();
+        	String osobaDane = imie + ";" + nazwisko + ";" + numerTelefonu + ";" + email + ";"+ miasto + ";" + ulica + ";" + numerDomu + ";" + kodPocztowy;
+        	osoba.add(osobaDane);
+        }
+        if (file != null) {
+        	SaveFile(osoba.toString(), file);
+        }
+    }
+    public void Zamknij(){
+    	Platform.exit();
     }
 
     public void Nowy(){
@@ -204,5 +266,12 @@ public class Ksiazka {
     	textFieldUlica.setText("");
     	textFieldNumerDomu.setText("");
     	textFieldKodPocztowy.setText("");
+    }
+    private void SaveFile(String content, File file) throws IOException{
+        FileWriter fileWriter = null;
+        fileWriter = new FileWriter(file);
+        fileWriter.write(content);
+        fileWriter.close();
+
     }
 }
