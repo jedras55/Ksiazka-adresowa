@@ -15,7 +15,7 @@
         <menus>
           <Menu mnemonicParsing="false" text="Plik">
             <items>
-              <MenuItem mnemonicParsing="false" text="Importuj książkę z pliku..." />
+              <MenuItem mnemonicParsing="false" onAction="#nowy" text="Importuj książkę z pliku..." />
                   <MenuItem mnemonicParsing="false" text="Eksportuj książkę do pliku..." />
                   <MenuItem mnemonicParsing="false" text="Zamknij" />
             </items>
