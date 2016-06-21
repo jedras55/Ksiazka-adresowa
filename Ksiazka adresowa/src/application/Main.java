@@ -14,7 +14,6 @@ public class Main extends Application {
 		Scene scene = new Scene(parent);
 		primaryStage.setScene(scene);
 		primaryStage.setTitle("Ksi¹¿ka adresowa");
-		primaryStage.setResizable(false);
 		primaryStage.show();
 	}
 

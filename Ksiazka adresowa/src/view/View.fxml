@@ -89,12 +89,6 @@
       <placeholder>
         <Label text="Książka jest pusta" />
     	</placeholder>
-        <columns>
-          <TableColumn fx:id="tableColumnImie" prefWidth="75.0" text="Imię" />
-          <TableColumn fx:id="tableColumnNazwisko" prefWidth="75.0" text="Nazwisko" />
-            <TableColumn fx:id="tableColumnEmail" prefWidth="75.0" text="E-mail" />
-            <TableColumn fx:id="tableColumnNumerTelefonu" prefWidth="75.0" text="Numer telefonu" />
-        </columns>
          <columnResizePolicy>
             <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
          </columnResizePolicy>
