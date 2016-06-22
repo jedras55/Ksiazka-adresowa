@@ -14,6 +14,8 @@ import javafx.scene.control.cell.PropertyValueFactory;
 
 public class Ksiazka implements Initializable{
 
+	Osoba wybranaOsoba = null;
+
     @FXML
     private TableView<Osoba> tableViewKsiazkaAdresowa = new TableView<Osoba>();
 
@@ -36,7 +38,6 @@ public class Ksiazka implements Initializable{
     	ksiazka.add(new Osoba("Jedrzej", "Ostrowski", "531363458", "jedrzej.ostrowski@gmail.com"));
     	ksiazka.add(new Osoba("Karolina", "Sawicka", "535002665", "sawicka.karolina@poczta.onet.pl"));
     	tableViewKsiazkaAdresowa.setItems(ksiazka);
-    	System.out.println("Test");
     }
 
     @FXML
@@ -61,7 +62,10 @@ public class Ksiazka implements Initializable{
 
     @FXML
     void usun(ActionEvent event) {
-
+    	wybranaOsoba = tableViewKsiazkaAdresowa.getSelectionModel().getSelectedItem();
+    	ksiazka.remove(wybranaOsoba);
+    	tableViewKsiazkaAdresowa.setItems(ksiazka);
+    	System.out.println("test");
     }
 
 	@Override

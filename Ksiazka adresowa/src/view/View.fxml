@@ -24,27 +24,27 @@
       </MenuBar>
       <ToolBar prefHeight="40.0" prefWidth="200.0">
          <items>
-            <Button mnemonicParsing="false">
+            <Button mnemonicParsing="false" onAction="#nowy">
                <graphic>
-                  <ImageView fitHeight="32.0" fitWidth="32.0" onMouseClicked="#nowy" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fitHeight="32.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../../res/new.png" />
                      </image>
                   </ImageView>
                </graphic>
             </Button>
-            <Button mnemonicParsing="false">
+            <Button mnemonicParsing="false" onAction="#otworz">
                <graphic>
-                  <ImageView fitHeight="32.0" fitWidth="32.0" onMouseClicked="#otworz" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fitHeight="32.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../../res/open.png" />
                      </image>
                   </ImageView>
                </graphic>
             </Button>
-            <Button mnemonicParsing="false">
+            <Button mnemonicParsing="false" onAction="#zapisz">
                <graphic>
-                  <ImageView fitHeight="32.0" fitWidth="32.0" onMouseClicked="#zapisz" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fitHeight="32.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../../res/save.png" />
                      </image>
@@ -56,27 +56,27 @@
                   <Insets left="10.0" right="10.0" />
                </padding>
             </Separator>
-            <Button mnemonicParsing="false">
+            <Button mnemonicParsing="false" onAction="#dodaj">
                <graphic>
-                  <ImageView fitHeight="32.0" fitWidth="32.0" onMouseClicked="#dodaj" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fitHeight="32.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../../res/add.png" />
                      </image>
                   </ImageView>
                </graphic>
             </Button>
-            <Button mnemonicParsing="false">
+            <Button mnemonicParsing="false" onAction="#edytuj">
                <graphic>
-                  <ImageView fitHeight="32.0" fitWidth="32.0" onMouseClicked="#edytuj" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fitHeight="32.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../../res/edit.png" />
                      </image>
                   </ImageView>
                </graphic>
             </Button>
-            <Button mnemonicParsing="false">
+            <Button mnemonicParsing="false" onAction="#usun">
                <graphic>
-                  <ImageView fitHeight="32.0" fitWidth="32.0" onMouseClicked="#usun" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fitHeight="32.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../../res/delete.png" />
                      </image>
