@@ -12,7 +12,7 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 
-public class Ksiazka implements Initializable{
+public class MainWindowController implements Initializable{
 
 	Osoba wybranaOsoba = null;
 

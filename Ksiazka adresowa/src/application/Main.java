@@ -10,7 +10,7 @@ import javafx.scene.Scene;
 public class Main extends Application {
 	@Override
 	public void start(Stage primaryStage) throws IOException {
-		Parent parent = (Parent)FXMLLoader.load(getClass().getResource("/view/View.fxml"));
+		Parent parent = (Parent)FXMLLoader.load(getClass().getResource("/view/MainWindow.fxml"));
 		Scene scene = new Scene(parent);
 		primaryStage.setScene(scene);
 		primaryStage.setTitle("Ksi¹¿ka adresowa");
