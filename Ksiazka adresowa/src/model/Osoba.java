@@ -1,4 +1,4 @@
-package logic;
+package model;
 
 public class Osoba {
 	private String imie;
