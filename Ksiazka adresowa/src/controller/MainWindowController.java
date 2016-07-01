@@ -48,7 +48,7 @@ public class MainWindowController implements Initializable{
 
     @FXML
     private void otworz(ActionEvent event) {
-    	tableViewKsiazkaAdresowa.setItems(Ksiazka.getInstance().getKsiazka());
+
     }
 
     @FXML
@@ -68,7 +68,18 @@ public class MainWindowController implements Initializable{
     }
 
     @FXML
-    private void edytuj(ActionEvent event) {
+    private void edytuj(ActionEvent event) throws IOException {
+    	wybranaOsoba = tableViewKsiazkaAdresowa.getSelectionModel().getSelectedItem();
+    	if(wybranaOsoba != null){
+	    	Ksiazka.getInstance().setEdytowanaOsoba(wybranaOsoba);
+	    	Parent parent = (Parent) FXMLLoader.load(getClass().getResource("/view/ContactEdit.fxml"));
+	    	Scene edytujOsobe = new Scene(parent);
+	    	Stage scenaEdycji = new Stage();
+	    	scenaEdycji.setScene(edytujOsobe);
+	    	scenaEdycji.setTitle("Ksi¹¿ka adresowa - Edytuj");
+	    	scenaEdycji.setResizable(false);
+	    	scenaEdycji.show();
+    	}
 
     }
 

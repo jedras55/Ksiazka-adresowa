@@ -1,18 +1,14 @@
 package controller;
 
-import java.net.URL;
-import java.util.ResourceBundle;
-
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import model.Ksiazka;
 import model.Osoba;
 
-public class ContactAddController implements Initializable {
+public class ContactAddController {
 	@FXML
 	private MainWindowController mainWindowController = new MainWindowController();
 
@@ -34,7 +30,7 @@ public class ContactAddController implements Initializable {
     @FXML
     private TextField textFieldNazwisko;
 
-	Stage stage = null;
+	private Stage stage = null;
 
     @FXML
     private void zatwierdz(ActionEvent event) {
@@ -48,9 +44,5 @@ public class ContactAddController implements Initializable {
     	stage = (Stage) buttonAnuluj.getScene().getWindow();
     	stage.close();
     }
-
-	@Override
-	public void initialize(URL location, ResourceBundle resources) {
-	}
 
 }
