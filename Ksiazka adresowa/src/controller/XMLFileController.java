@@ -22,6 +22,8 @@ import javax.xml.stream.events.EndElement;
 import javax.xml.stream.events.StartElement;
 import javax.xml.stream.events.XMLEvent;
 
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
 import model.Ksiazka;
 import model.Osoba;
 
@@ -108,7 +110,12 @@ public class XMLFileController {
 				}
 			}
 			catch(XMLStreamException e){
-				e.printStackTrace();
+				Alert alert = new Alert(AlertType.ERROR);
+				alert.setTitle("B³¹d");
+				alert.setHeaderText("Plik uszkodzony");
+				alert.setContentText("Wygl¹da na to, ¿e Twój plik z kontaktami jest uszkodzony lub niepoprawny");
+
+				alert.showAndWait();
 			}
 			catch(FileNotFoundException e){
 				e.printStackTrace();
