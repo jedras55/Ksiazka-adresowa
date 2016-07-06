@@ -11,17 +11,6 @@
 
 <VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="1032.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.MainWindowController">
    <children>
-      <MenuBar>
-        <menus>
-          <Menu mnemonicParsing="false" text="Plik">
-            <items>
-              <MenuItem mnemonicParsing="false" onAction="#nowy" text="Importuj książkę z pliku..." />
-                  <MenuItem mnemonicParsing="false" text="Eksportuj książkę do pliku..." />
-                  <MenuItem mnemonicParsing="false" text="Zamknij" />
-            </items>
-          </Menu>
-        </menus>
-      </MenuBar>
       <ToolBar prefHeight="40.0" prefWidth="200.0">
          <items>
             <Button mnemonicParsing="false" onAction="#nowy">
