@@ -1,5 +1,6 @@
 package controller;
 
+import java.io.File;
 import java.io.IOException;
 import java.net.URL;
 import java.util.Optional;
@@ -21,6 +22,7 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import model.Ksiazka;
 import model.Osoba;
@@ -44,6 +46,7 @@ public class MainWindowController implements Initializable{
     @FXML
     private TableColumn tableColumnNumerTelefonu;
 
+
     @FXML
     public void nowy() {
     	Alert alert = new Alert(AlertType.CONFIRMATION);
@@ -59,12 +62,27 @@ public class MainWindowController implements Initializable{
 
     @FXML
     private void otworz(ActionEvent event) {
-
+    	FileChooser fileChooser = new FileChooser();
+        FileChooser.ExtensionFilter extFilter = new FileChooser.ExtensionFilter("Pliki .xml (*.xml)", "*.xml");
+        fileChooser.getExtensionFilters().add(extFilter);
+        File file = fileChooser.showOpenDialog(new Stage());
+        if(file != null){
+        	XMLFileController xMLFileController = new XMLFileController(file.getPath());
+        	xMLFileController.importContacts();
+        }
     }
 
     @FXML
     private void zapisz(ActionEvent event) {
-
+    	FileChooser fileChooser = new FileChooser();
+		FileChooser.ExtensionFilter extFilter = new FileChooser.ExtensionFilter("Pliki .xml (*.xml)", "*.xml");
+        fileChooser.getExtensionFilters().add(extFilter);
+        fileChooser.setTitle("Zapisz plik");
+        File file = fileChooser.showSaveDialog(new Stage());
+        if (file != null) {
+        	XMLFileController xMLFileController = new XMLFileController(file.getPath());
+        	xMLFileController.exportContacts();
+        }
     }
 
     @FXML
