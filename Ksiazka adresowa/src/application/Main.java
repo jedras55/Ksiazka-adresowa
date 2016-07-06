@@ -181,13 +181,12 @@ public class Main extends Application {
 			String xmlString = stringWriter.getBuffer().toString();
 			stringWriter.close();
 
-			System.out.println(xmlString);
 			writer.write(xmlString);
 
 		} catch (XMLStreamException e) {
 			e.printStackTrace();
 		} catch (IOException e){
-			System.err.println("Nie udalo sie zapisac do pliku");
+			e.printStackTrace();
 		}
 
 	}

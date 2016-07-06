@@ -2,6 +2,7 @@ package controller;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.Optional;
 import java.util.ResourceBundle;
 
 import javafx.collections.FXCollections;
@@ -12,7 +13,10 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
@@ -42,8 +46,15 @@ public class MainWindowController implements Initializable{
 
     @FXML
     public void nowy() {
-    	dodajOsobe("Jan", "Nowak", "111111111", "jannowak@wp.pl");
-    	dodajOsobe("Maria", "Kowalska", "999999999", "mariakowalska@wp.pl");
+    	Alert alert = new Alert(AlertType.CONFIRMATION);
+    	alert.setTitle("Nowa lista");
+    	alert.setHeaderText("Czy wyczyœciæ listê?");
+    	alert.setContentText("Tworz¹c now¹ listê, stara zostanie wyczysczona.");
+
+    	Optional<ButtonType> result = alert.showAndWait();
+    	if (result.get() == ButtonType.OK){
+    	   Ksiazka.getInstance().getKsiazka().clear();
+    	}
     }
 
     @FXML
