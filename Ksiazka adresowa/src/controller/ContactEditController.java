@@ -35,20 +35,20 @@ public class ContactEditController implements Initializable {
     private Stage stage = null;
 
     @FXML
-    void edytuj(ActionEvent event) {
+    void edytuj(ActionEvent event) { // Edytuje osobê na podstawie pól tekstowych i wybranej osoby na liœcie nastêpnie zamyka okno
 		Ksiazka.getInstance().editKsiazka(Ksiazka.getInstance().getEdytowanaOsoba(), textFieldImie.getText(), textFieldNazwisko.getText(), textFieldNumerTelefonu.getText(), textFieldEmail.getText());
     	stage = (Stage) buttonEdytuj.getScene().getWindow();
     	stage.close();
     }
 
     @FXML
-    void anuluj(ActionEvent event) {
+    void anuluj(ActionEvent event) { // Zamyka okno
     	stage = (Stage) buttonAnuluj.getScene().getWindow();
     	stage.close();
     }
 
 	@Override
-	public void initialize(URL location, ResourceBundle resources) {
+	public void initialize(URL location, ResourceBundle resources) { // Ustawia wartoœci text fieldów na w³aœciwe dla wybranej osoby
 		Osoba wybranaOsoba = Ksiazka.getInstance().getEdytowanaOsoba();
 		textFieldImie.setText(wybranaOsoba.getImie());
 		textFieldNazwisko.setText(wybranaOsoba.getNazwisko());

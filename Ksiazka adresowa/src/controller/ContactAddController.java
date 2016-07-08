@@ -33,14 +33,14 @@ public class ContactAddController {
 	private Stage stage = null;
 
     @FXML
-    private void zatwierdz(ActionEvent event) {
+    private void zatwierdz(ActionEvent event) { // Metoda dodaj¹ca osobê na podstawie wartoœci pól tekstowych, nastêpnie zamyka okno
     	Ksiazka.getInstance().addKsiazka(new Osoba(textFieldImie.getText(), textFieldNazwisko.getText(), textFieldNumerTelefonu.getText(), textFieldEmail.getText()));
     	stage = (Stage) buttonDodaj.getScene().getWindow();
     	stage.close();
     }
 
     @FXML
-    private void anuluj(ActionEvent event) {
+    private void anuluj(ActionEvent event) { // Metoda zamykaj¹ca okno
     	stage = (Stage) buttonAnuluj.getScene().getWindow();
     	stage.close();
     }

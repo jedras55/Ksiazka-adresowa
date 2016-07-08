@@ -46,78 +46,6 @@ public class MainWindowController implements Initializable{
     @FXML
     private TableColumn tableColumnNumerTelefonu;
 
-
-    @FXML
-    public void nowy() {
-    	Alert alert = new Alert(AlertType.CONFIRMATION);
-    	alert.setTitle("Nowa lista");
-    	alert.setHeaderText("Czy wyczyœciæ listê?");
-    	alert.setContentText("Tworz¹c now¹ listê, stara zostanie wyczysczona.");
-
-    	Optional<ButtonType> result = alert.showAndWait();
-    	if (result.get() == ButtonType.OK){
-    	   Ksiazka.getInstance().getKsiazka().clear();
-    	}
-    }
-
-    @FXML
-    private void otworz(ActionEvent event) {
-    	FileChooser fileChooser = new FileChooser();
-        FileChooser.ExtensionFilter extFilter = new FileChooser.ExtensionFilter("Pliki .xml (*.xml)", "*.xml");
-        fileChooser.getExtensionFilters().add(extFilter);
-        File file = fileChooser.showOpenDialog(new Stage());
-        if(file != null){
-        	XMLFileController xMLFileController = new XMLFileController(file.getPath());
-        	xMLFileController.importContacts();
-        }
-    }
-
-    @FXML
-    private void zapisz(ActionEvent event) {
-    	FileChooser fileChooser = new FileChooser();
-		FileChooser.ExtensionFilter extFilter = new FileChooser.ExtensionFilter("Pliki .xml (*.xml)", "*.xml");
-        fileChooser.getExtensionFilters().add(extFilter);
-        fileChooser.setTitle("Zapisz plik");
-        File file = fileChooser.showSaveDialog(new Stage());
-        if (file != null) {
-        	XMLFileController xMLFileController = new XMLFileController(file.getPath());
-        	xMLFileController.exportContacts();
-        }
-    }
-
-    @FXML
-    private void dodaj(ActionEvent event) throws IOException {
-    	Parent parent = (Parent) FXMLLoader.load(getClass().getResource("/view/ContactAdd.fxml"));
-    	Scene dodajOsobe = new Scene(parent);
-    	Stage scenaDodawania = new Stage();
-    	scenaDodawania.setScene(dodajOsobe);
-    	scenaDodawania.setTitle("Ksi¹¿ka adresowa - Dodaj");
-    	scenaDodawania.setResizable(false);
-    	scenaDodawania.show();
-    }
-
-    @FXML
-    private void edytuj(ActionEvent event) throws IOException {
-    	wybranaOsoba = tableViewKsiazkaAdresowa.getSelectionModel().getSelectedItem();
-    	if(wybranaOsoba != null){
-	    	Ksiazka.getInstance().setEdytowanaOsoba(wybranaOsoba);
-	    	Parent parent = (Parent) FXMLLoader.load(getClass().getResource("/view/ContactEdit.fxml"));
-	    	Scene edytujOsobe = new Scene(parent);
-	    	Stage scenaEdycji = new Stage();
-	    	scenaEdycji.setScene(edytujOsobe);
-	    	scenaEdycji.setTitle("Ksi¹¿ka adresowa - Edytuj");
-	    	scenaEdycji.setResizable(false);
-	    	scenaEdycji.show();
-    	}
-
-    }
-
-    @FXML
-    private void usun(ActionEvent event) {
-    	wybranaOsoba = tableViewKsiazkaAdresowa.getSelectionModel().getSelectedItem();
-    	Ksiazka.getInstance().removeKsiazka(wybranaOsoba);
-    }
-
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 			inicjalizacjaListy();
@@ -136,9 +64,75 @@ public class MainWindowController implements Initializable{
     	tableViewKsiazkaAdresowa.setItems(Ksiazka.getInstance().getKsiazka());
 	}
 
-	public void dodajOsobe(String imie, String nazwisko, String numerTelefonu, String email){
-		Ksiazka.getInstance().addKsiazka(new Osoba(imie, nazwisko, numerTelefonu, email));
-		tableViewKsiazkaAdresowa.setItems(Ksiazka.getInstance().getKsiazka());
-	}
+    @FXML
+    public void nowy() { // Wyœietla alert, przy potwierdzeniu czyœci listê - tworzy now¹
+    	Alert alert = new Alert(AlertType.CONFIRMATION);
+    	alert.setTitle("Nowa lista");
+    	alert.setHeaderText("Czy wyczyœciæ listê?");
+    	alert.setContentText("Tworz¹c now¹ listê, stara zostanie wyczysczona.");
+
+    	Optional<ButtonType> result = alert.showAndWait();
+    	if (result.get() == ButtonType.OK){
+    	   Ksiazka.getInstance().getKsiazka().clear();
+    	}
+    }
+
+    @FXML
+    private void otworz(ActionEvent event) { // Otwiera plik .xml z file choosera, przepisuje z niego kontakty do ksi¹¿ki
+    	FileChooser fileChooser = new FileChooser();
+        FileChooser.ExtensionFilter extFilter = new FileChooser.ExtensionFilter("Pliki .xml (*.xml)", "*.xml");
+        fileChooser.getExtensionFilters().add(extFilter);
+        File file = fileChooser.showOpenDialog(new Stage());
+        if(file != null){
+        	XMLFileController xMLFileController = new XMLFileController(file.getPath());
+        	xMLFileController.importContacts();
+        }
+    }
+
+    @FXML
+    private void zapisz(ActionEvent event) { // Wpisuje kontakty do pluku .xml wybranego z file choosera
+    	FileChooser fileChooser = new FileChooser();
+		FileChooser.ExtensionFilter extFilter = new FileChooser.ExtensionFilter("Pliki .xml (*.xml)", "*.xml");
+        fileChooser.getExtensionFilters().add(extFilter);
+        fileChooser.setTitle("Zapisz plik");
+        File file = fileChooser.showSaveDialog(new Stage());
+        if (file != null) {
+        	XMLFileController xMLFileController = new XMLFileController(file.getPath());
+        	xMLFileController.exportContacts();
+        }
+    }
+
+    @FXML
+    private void dodaj(ActionEvent event) throws IOException { // Otwiera okno tworzenia kontaktu
+    	Parent parent = (Parent) FXMLLoader.load(getClass().getResource("/view/ContactAdd.fxml"));
+    	Scene dodajOsobe = new Scene(parent);
+    	Stage scenaDodawania = new Stage();
+    	scenaDodawania.setScene(dodajOsobe);
+    	scenaDodawania.setTitle("Ksi¹¿ka adresowa - Dodaj");
+    	scenaDodawania.setResizable(false);
+    	scenaDodawania.show();
+    }
+
+    @FXML
+    private void edytuj(ActionEvent event) throws IOException { // Otwiera okno edycji osoby wybranej z listy
+    	wybranaOsoba = tableViewKsiazkaAdresowa.getSelectionModel().getSelectedItem();
+    	if(wybranaOsoba != null){
+	    	Ksiazka.getInstance().setEdytowanaOsoba(wybranaOsoba);
+	    	Parent parent = (Parent) FXMLLoader.load(getClass().getResource("/view/ContactEdit.fxml"));
+	    	Scene edytujOsobe = new Scene(parent);
+	    	Stage scenaEdycji = new Stage();
+	    	scenaEdycji.setScene(edytujOsobe);
+	    	scenaEdycji.setTitle("Ksi¹¿ka adresowa - Edytuj");
+	    	scenaEdycji.setResizable(false);
+	    	scenaEdycji.show();
+    	}
+
+    }
+
+    @FXML
+    private void usun(ActionEvent event) { // Usuwa z listy wybran¹ osobê
+    	wybranaOsoba = tableViewKsiazkaAdresowa.getSelectionModel().getSelectedItem();
+    	Ksiazka.getInstance().removeKsiazka(wybranaOsoba);
+    }
 
 }

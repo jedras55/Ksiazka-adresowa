@@ -1,5 +1,7 @@
 package controller;
-
+/*
+ * Klasa odpowiedzialna za importowanie i eksportowanie kontaktów miêdzy plikami, do wskazanego przy tworzeniu obiektu pliku
+ */
 import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileNotFoundException;
