@@ -8,10 +8,9 @@ import javafx.fxml.FXMLLoader;
 import javafx.stage.Stage;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.image.Image;
 
 public class Main extends Application {
-	private String fileName = "res/contacts.xml"; // Œcie¿ka do wewnêtrznego pliku, który przechowuje kontakty
+	private String fileName = "src/application/contacts.xml"; // Œcie¿ka do wewnêtrznego pliku, który przechowuje kontakty
 	@Override
 	public void start(Stage primaryStage) throws IOException {
 		XMLFileController xMLFileController = new XMLFileController(fileName);
@@ -20,7 +19,6 @@ public class Main extends Application {
 		Scene scene = new Scene(parent);
 		primaryStage.setScene(scene);
 		primaryStage.setTitle("Ksi¹¿ka adresowa");
-		primaryStage.getIcons().add(new Image("file:res/adress_book_icon.png"));
 		primaryStage.show();
 	}
 	public void stop(){
