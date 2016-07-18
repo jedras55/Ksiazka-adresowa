@@ -10,7 +10,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 
 public class Main extends Application {
-	private String fileName = "src/application/contacts.xml"; // Œcie¿ka do wewnêtrznego pliku, który przechowuje kontakty
+	private String fileName = "res/contacts.xml"; // Œcie¿ka do wewnêtrznego pliku, który przechowuje kontakty
 	@Override
 	public void start(Stage primaryStage) throws IOException {
 		XMLFileController xMLFileController = new XMLFileController(fileName);
