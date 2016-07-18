@@ -106,6 +106,10 @@ public class XMLFileController {
 	                     EndElement endElement = event.asEndElement();
 	                     if(endElement.getName().getLocalPart().equalsIgnoreCase("contact")){
 	                        Ksiazka.getInstance().addKsiazka(new Osoba(firstName, lastName, phone, email));
+	                        firstName = "";
+	                        lastName = "";
+	                        phone = "";
+	                        email = "";
 	                     }
 	                     break;
 	               }
@@ -143,21 +147,30 @@ public class XMLFileController {
 			for(Osoba contact: Ksiazka.getInstance().getKsiazka()){
 				xMLStreamWriter.writeStartElement("contact");
 
-				xMLStreamWriter.writeStartElement("firstname");
-				xMLStreamWriter.writeCharacters(contact.getImie());
-				xMLStreamWriter.writeEndElement();
+				if(!contact.getImie().isEmpty()){
+					xMLStreamWriter.writeStartElement("firstname");
+					xMLStreamWriter.writeCharacters(contact.getImie());
+					xMLStreamWriter.writeEndElement();
+				}
 
-				xMLStreamWriter.writeStartElement("lastname");
-				xMLStreamWriter.writeCharacters(contact.getNazwisko());
-				xMLStreamWriter.writeEndElement();
+				if(!contact.getNazwisko().isEmpty()){
+					xMLStreamWriter.writeStartElement("lastname");
+					xMLStreamWriter.writeCharacters(contact.getNazwisko());
+					xMLStreamWriter.writeEndElement();
+				}
 
-				xMLStreamWriter.writeStartElement("phone");
-				xMLStreamWriter.writeCharacters(contact.getNumerTelefonu());
-				xMLStreamWriter.writeEndElement();
+				if(!contact.getNumerTelefonu().isEmpty()){
+					xMLStreamWriter.writeStartElement("phone");
+					xMLStreamWriter.writeCharacters(contact.getNumerTelefonu());
+					xMLStreamWriter.writeEndElement();
+				}
 
-				xMLStreamWriter.writeStartElement("email");
-				xMLStreamWriter.writeCharacters(contact.getEmail());
-				xMLStreamWriter.writeEndElement();
+				if(!contact.getEmail().isEmpty()){
+					//System.out.println(contact.getEmail().);
+					xMLStreamWriter.writeStartElement("email");
+					xMLStreamWriter.writeCharacters(contact.getEmail());
+					xMLStreamWriter.writeEndElement();
+				}
 
 				xMLStreamWriter.writeEndElement();
 			}
